@@ -1,5 +1,36 @@
-<h1>Tech Blog</h1>
+<section>
+  <h2>Welcome to Tech Blog!</h2>
+  <p>Stay updated with the latest news and trends in the tech industry.</p>
+</section>
 
-{{#each posts}}
-  {{> post-info}}
-{{/each}}
+{{#if posts.length}}
+<section>
+  <h2>Recent Posts</h2>
+  {{#each posts as |post|}}
+  <article class="post">
+    <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+    <p class="meta">Posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
+    <p>{{post.content}}</p>
+    <a href="/post/{{post.id}}" class="btn">Read More</a>
+  </article>
+  {{/each}}
+</section>
+{{else}}
+<section>
+  <h2>No Posts Found</h2>
+  <p>There are currently no blog posts available. Please check back later!</p>
+</section>
+{{/if}}
+
+{{#if logged_in}}
+<section>
+  <h2>Create a New Post</h2>
+  <a href="/dashboard/new" class="btn">New Post</a>
+</section>
+{{else}}
+<section>
+  <h2>Join Our Community</h2>
+  <p>Sign up now to start sharing your thoughts and insights with fellow tech enthusiasts!</p>
+  <a href="/signup" class="btn">Sign Up</a>
+</section>
+{{/if}}
