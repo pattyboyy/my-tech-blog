@@ -1,8 +1,6 @@
 <article class="post">
-  <header>
-    <h2>{{post.title}}</h2>
-    <p>Posted by {{post.user.username}} on {{format_date post.created_at}}</p>
-  </header>
+  <h2>{{post.title}}</h2>
+  <p class="meta">Posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
   <div class="content">
     {{post.content}}
   </div>
